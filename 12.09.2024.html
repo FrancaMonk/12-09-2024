@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia do Programador</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #282c34;
+            color: #61dafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .card {
+            text-align: center;
+            border: 2px solid #61dafb;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1e1e1e;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        pre {
+            text-align: left;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            color: #8cd4ff;
+            max-height: 600px;
+            overflow-y: auto;
+            white-space: pre;
+            word-wrap: normal;
+            display: none;
+        }
+
+        .date {
+            margin-top: 10px;
+            color: #8cd4ff;
+            font-size: 14px;
+        }
+
+        #popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e1e1e;
+            color: #61dafb;
+            border: 2px solid #61dafb;
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            z-index: 1000;
+        }
+
+        #modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fde3b1;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #61dafb;
+            display: none;
+            z-index: 1001;
+            max-width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        #modal h2 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 10px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            pre {
+                font-size: 12px;
+            }
+
+            .date {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Feliz Dia do Programador!</h1>
+        <p>Feliz dia, meu amor! Você é a programadora mais incrível que eu conheço e, sem dúvidas, a mais linda de todos
+            os tempos! Que você continue sendo essa programadora extraordinária, amada por todos. E pode ter certeza de
+            uma coisa: todos irão te amar, pois você é realmente incrível, e eu sempre estarei na primeira fileira
+            aplaudindo você.<br> <strong>Serei sempre seu maior fã! TE AMO 💖</strong></p>
+        <button onclick="toggleCode()">Essa é a PC do meu coração ❤️</button>
+
+        <pre id="codeBlock"></pre>
+        <div id="date" class="date">12/09/2024</div>
+    </div>
+
+    <div id="popup">💌 Você recebeu uma carta</div>
+    <div id="modal">
+        <h2>Mensagem Especial</h2>
+        <p>Thata,<br><br>
+            Estou muito feliz que você faz parte da minha vida, você com certeza é a programadora que resolve todos os meus problemas e está comigo para me ajudar sempre, tanto na vida quanto no jogo, com isso te envio esse presente!<br><br>
+            Para resgatar me mande a seguinte mensagem no Skype ou Whatsapp: Achei o easter egg e quero meu presente!<br><br>
+            Te amo muito!<br><br>
+            Ass: Pepe!
+        </p>
+    </div>
+
+    <script>
+        function toggleCode() {
+            let sqlQuery = "SELECT * FROM PCcoração WHERE Person = 'Thai';";
+            let jsMessage = `console.log('Parabéns pelo seu dia amor!');`;
+
+            let response = `Executando SQL: ${sqlQuery}
+-------------------------------------------------
+Resultado: 
+{
+    'Person': 'Thai',
+    'Role': 'Melhor Programadora/Minha programadora!',
+    'Feelings': 'Orgulho, Admiração e Muito Amor'
+}
+
+Executando JavaScript: ${jsMessage}
+-------------------------------------------------
+Saída no Console: 'Parabéns pelo seu dia amor!'`;
+
+            let codeBlock = document.getElementById("codeBlock");
+
+            if (codeBlock.style.display === "none" || codeBlock.style.display === "") {
+                codeBlock.textContent = response;
+                codeBlock.style.display = "block";
+
+                // Exibe o popup e oculta-o após 7 segundos
+                let popup = document.getElementById("popup");
+                popup.style.display = "block";
+                setTimeout(() => {
+                    popup.style.display = "none";
+                }, 7000);
+            } else {
+                codeBlock.style.display = "none";
+            }
+        }
+
+        document.getElementById("popup").onclick = function () {
+            let modal = document.getElementById("modal");
+            modal.style.display = "block";
+        }
+
+        // Adiciona um evento para fechar o modal ao clicar fora dele
+        window.onclick = function (event) {
+            let modal = document.getElementById("modal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
